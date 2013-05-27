@@ -1,15 +1,18 @@
 require "breadnbutter/version"
-require 'active_support/core_ext/string' # This allows us to require this file outside of Rails
-require 'breadnbutter/railtie' if defined?(Rails::Railtie)
-require 'pry'
-#binding.pry
+
+if Rails.version < '3.1'
+  raise "Rails 3.1 or greater is required to run BreadnButter"
+end
+
+require 'breadnbutter/railtie' 
+require 'breadnbutter/engine'
 
 module BreadnButter
   class Crumb
-    JOINER = " &raquo; ".html_safe
-    HIDDEN_TEXT_ELEMENTS = ['Permanent Pages']
-    FIRST_OVERRIDE_URL = '/'
-    FIRST_OVERRIDE_TEXT = 'HOME'
+    JOINER = "&raquo;".html_safe
+    HIDDEN_ELEMENTS = []
+    HOME_URL = '/'
+    HOME_TEXT = 'HOME'
 
     attr_accessor :url, :text
 
@@ -17,12 +20,40 @@ module BreadnButter
       url.present?
     end
 
-    def joiner
-      JOINER
+    def hidden?
+      hidden_elements.include? text
     end
 
-    def hidden?
-      HIDDEN_TEXT_ELEMENTS.include? text
+    def joiner
+      begin
+        Rails.configuration.breadnbutter_joiner
+      rescue NoMethodError
+        JOINER
+      end
+    end
+
+    def hidden_elements
+      begin
+        Rails.configuration.breadnbutter_hidden_elements
+      rescue NoMethodError
+        HIDDEN_ELEMENTS
+      end
+    end
+
+    def self.home_text
+      begin
+        Rails.configuration.breadnbutter_home_text
+      rescue NoMethodError
+        HOME_TEXT
+      end
+    end
+
+    def self.home_url
+      begin
+        Rails.configuration.breadnbutter_home_url
+      rescue NoMethodError
+        HOME_URL
+      end
     end
 
     def self.new_from_hash(hash)
@@ -47,7 +78,7 @@ module BreadnButter
     end
 
     def self.override_first(array)
-      first = self.new_from_hash(text: FIRST_OVERRIDE_TEXT, url: FIRST_OVERRIDE_URL)
+      first = self.new_from_hash(text: home_text, url: home_url)
       array[0] = first
       array
     end
@@ -79,4 +110,3 @@ module BreadnButter
 
 end
 
-require 'breadnbutter/engine'

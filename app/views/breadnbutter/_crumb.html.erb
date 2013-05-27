@@ -1,6 +1,8 @@
-<div id='breadcrumbs'>
+<div id='breadnbutter'>
   <% breadcrumbs.each_with_index do |crumb, index| %>
-    <%= crumb.joiner unless index == 0 %>
-    <%= link_to_if(crumb.linkable, crumb.text, crumb.url) %>
+    <% unless index == 0 %>
+      <joiner><%= crumb.joiner %></joiner>
+    <% end %>
+    <crumb><%= link_to_if(crumb.linkable, crumb.text, crumb.url) %></crumb>
   <% end %>
 </div>
