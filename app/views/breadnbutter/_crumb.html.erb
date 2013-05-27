@@ -1,0 +1,6 @@
+<div id='breadcrumbs'>
+  <% breadcrumbs.each_with_index do |crumb, index| %>
+    <%= crumb.joiner unless index == 0 %>
+    <%= link_to_if(crumb.linkable, crumb.text, crumb.url) %>
+  <% end %>
+</div>
