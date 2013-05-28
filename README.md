@@ -9,7 +9,7 @@ from your RESTful url:
 ### localhost:3000/users/john/entries/how-the-world-goes-round/edit
 
 
-(Note how you can tell from the url that *John* is a *user* and he wrote an *Entry* named *how-the-world-goes-round* and that you are in the *edit* action.
+(Note how you can tell from the url that _John_ is a _user_ and he wrote an _Entry_ named _how-the-world-goes-round_ and that you are in the _edit_ action.
 
 Non RESTful counterexample: 
 
