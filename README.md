@@ -9,15 +9,6 @@ from your RESTful url:
 ### localhost:3000/users/john/entries/how-the-world-goes-round/edit
 
 
-(Note how you can tell from the url that _John_ is a _user_ and he wrote an _Entry_ named _how-the-world-goes-round_ and that you are in the _edit_ action.
-
-Non RESTful counterexample: 
-
-    localhost:3000/beach-play
-
-(error: not able to determine model name from url)
-
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -28,33 +19,15 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install breadnbutter
-
 ## Requirements
 
-Requires Rails 3.1 or greater, since it uses Engine and Railtie
-
-Requires RESTful urls. 
-
-RESTful example: 
-
-    localhost:3000/users/john/entries/how-the-world-goes-round/edit
-
-(Note how you can tell from the url that *John* is a *user* and he wrote an *Entry* named *how-the-world-goes-round* and that you are in the *edit* action.
-
-Non RESTful counterexample: 
-
-    localhost:3000/beach-play
-
-(error: not able to determine model name from url)
-
-
+* Rails 3.1 or greater, since it uses Engine and Railtie
+* RESTful urls. 
+* Each model must have a :name attribute if you want text displayed for it instead of an id  
 
 ## Usage
 
-On any view that you want breadcrumbs, call
+Wherever you want a breadcrumb, call
  
     <%= render_breadcrumbs %>
 
@@ -90,11 +63,11 @@ For the aesthete in you, add some styling and tweak to taste.
         padding: 0 0.5ex;
         color: grey;
       }
-      crumb a{
-        color: gold;
-      }
       crumb{
         color: grey;
+      }
+      crumb a{
+        color: gold;
       }
     }
 
