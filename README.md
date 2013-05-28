@@ -1,8 +1,23 @@
 # BreadnButter
 
-Creates a linkable breadcrumb trail based on your url:
+Creates a linkable breadcrumb trail based on your RESTful url:
 
-[Home](http://github.com/jackdesert/breadnbutter) » [Projects](http://github.com/jackdesert/breadnbutter/projects) » [Mow the Yard](http://github.com/jackdesert/breadnbutter/projects/mow-the-yard) » Edit
+RESTful example: 
+
+    localhost:3000/users/john/entries/how-the-world-goes-round/edit
+
+becomes
+
+[Home](http://localhost:3000/) » [Users](http://localhost:3000/users/) » [John](http://localhost:3000/users/john/) » [Entries](http://localhost:3000/users/john/entries/) » [How the World Goes Round](http://localhost:3000/users/john/entries/how-the-world-goes-round) » Edit
+
+(Note how you can tell from the url that *John* is a *user* and he wrote an *Entry* named *how-the-world-goes-round* and that you are in the *edit* action.
+
+Non RESTful counterexample: 
+
+    localhost:3000/beach-play
+
+(error: not able to determine model name from url)
+
 
 ## Installation
 
@@ -21,6 +36,22 @@ Or install it yourself as:
 ## Requirements
 
 Requires Rails 3.1 or greater, since it uses Engine and Railtie
+
+Requires RESTful urls. 
+
+RESTful example: 
+
+    localhost:3000/users/john/entries/how-the-world-goes-round/edit
+
+(Note how you can tell from the url that *John* is a *user* and he wrote an *Entry* named *how-the-world-goes-round* and that you are in the *edit* action.
+
+Non RESTful counterexample: 
+
+    localhost:3000/beach-play
+
+(error: not able to determine model name from url)
+
+
 
 ## Usage
 
