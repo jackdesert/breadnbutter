@@ -1,10 +1,10 @@
 # BreadnButter
 
-Creates a linkable breadcrumb trail based on your RESTful url:
+Creates a breadcrumb trail:
 
 ### [Home](http://localhost:3000/) » [Users](http://localhost:3000/users/) » [John](http://localhost:3000/users/john/) » [Entries](http://localhost:3000/users/john/entries/) » [How the World Goes Round](http://localhost:3000/users/john/entries/how-the-world-goes-round) » Edit
 
-from
+from your RESTful url:
 
 ### localhost:3000/users/john/entries/how-the-world-goes-round/edit
 
