@@ -1,8 +1,13 @@
 # BreadnButter
 
-Creates a linkable breadcrumb trail based on your url:
+Creates a breadcrumb trail:
 
-[Home](http://github.com/jackdesert/breadnbutter) » [Projects](http://github.com/jackdesert/breadnbutter/projects) » [Mow the Yard](http://github.com/jackdesert/breadnbutter/projects/mow-the-yard) » Edit
+### [Home](http://localhost:3000/) » [Users](http://localhost:3000/users/) » [John](http://localhost:3000/users/john/) » [Entries](http://localhost:3000/users/john/entries/) » [How the World Goes Round](http://localhost:3000/users/john/entries/how-the-world-goes-round) » Edit
+
+from your RESTful url:
+
+### localhost:3000/users/john/entries/how-the-world-goes-round/edit
+
 
 ## Installation
 
@@ -14,17 +19,15 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install breadnbutter
-
 ## Requirements
 
-Requires Rails 3.1 or greater, since it uses Engine and Railtie
+* Rails 3.1 or greater, since it uses Engine and Railtie
+* RESTful urls. 
+* Each model must have a :name attribute if you want text displayed for it instead of an id  
 
 ## Usage
 
-On any view that you want breadcrumbs, call
+Wherever you want a breadcrumb, call
  
     <%= render_breadcrumbs %>
 
@@ -50,7 +53,7 @@ The following can be set to further customize BreadnButter
 
 ## Styling
 
-For the aesthete in you, add some styling and tweak to taste.
+For the aesthete in you, add some styling and tweak to taste. Note the non-standard elements *crumb* and *joiner*. These are more concise than <div class='joiner'> would be, and they have the added benefit of defaulting to display: inline. 
     
     #breadnbutter{
       padding: 1ex 1ex;
@@ -60,11 +63,11 @@ For the aesthete in you, add some styling and tweak to taste.
         padding: 0 0.5ex;
         color: grey;
       }
-      crumb a{
-        color: gold;
-      }
       crumb{
         color: grey;
+      }
+      crumb a{
+        color: gold;
       }
     }
 
