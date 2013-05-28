@@ -53,7 +53,7 @@ The following can be set to further customize BreadnButter
 
 ## Styling
 
-For the aesthete in you, add some styling and tweak to taste.
+For the aesthete in you, add some styling and tweak to taste. Note the non-standard elements *crumb* and *joiner*. These are more concise than <div class='joiner'> would be, and they have the added benefit of defaulting to display: inline. 
     
     #breadnbutter{
       padding: 1ex 1ex;
